@@ -17,7 +17,7 @@ Shopora is a React + Vite product catalogue that compares recorded offer snapsho
 
 **Prices are not live.** All current records use `dataIsLive: false` and a snapshot date of 18 September 2026. Prices, stock, delivery and seller data may be stale. Retailer URLs are search pages rather than guaranteed variant-specific product pages. Confirm the current listing with the retailer before purchase.
 
-**Ratings and review counts are unverified catalogue snapshots.** They do not have per-retailer source URLs or capture timestamps. Product images are AI-generated illustrations, not official retailer photographs; they may not accurately represent the exact variant.
+**Ratings and review counts are not shown.** The original catalogue numbers lacked per-retailer source URLs and capture timestamps, so they have been removed instead of being displayed as if they were trustworthy. Product images are AI-generated illustrations, not official retailer photographs; they may not accurately represent the exact variant.
 
 Before presenting Shopora as a live price-comparison service, add a permitted retailer feed/API, save a source URL and capture timestamp per offer, schedule refreshes, monitor freshness and failures, and display data provenance. Do not scrape websites or claim offers are verified unless the source and its terms allow that use.
 

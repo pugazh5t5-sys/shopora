@@ -15,8 +15,7 @@
  *    - imagePrompt:  string, text_to_image prompt used to generate the image (for reproducibility)
  *    - specs:        array of strings — key specification bullets
  *    - mrp:          number, integer rupees, NO DECIMALS (MRP / launch price in INR)
- *    - rating:       number, 0-5 (currently unverified catalogue data; requires source URL and timestamp)
- *    - reviews:      integer, review count (currently unverified catalogue data; requires source URL and timestamp)
+ *    - rating/reviews: add only after a verified source URL and capture timestamp are available; currently omitted
  *    - lastUpdated:  ISO date string YYYY-MM-DD of the price data snapshot
  *    - dataIsLive:   boolean — true if prices come from live API refresh; false (MVP) = static researched snapshot
  *    - sellers:      array of objects:
@@ -87,8 +86,6 @@ export const products = [
       'Dynamic Island, iOS with long-term software support',
     ],
     mrp: 79900,
-    rating: 4.6,
-    reviews: 26366,
     lastUpdated: '2026-09-18',
     dataIsLive: false,
     sellers: [
@@ -133,8 +130,6 @@ export const products = [
       'Android 14 with One UI, 7 years OS/security updates, Circle to Search',
     ],
     mrp: 79999,
-    rating: 4.5,
-    reviews: 7855,
     lastUpdated: '2026-09-18',
     dataIsLive: false,
     sellers: [
@@ -179,8 +174,6 @@ export const products = [
       'OxygenOS 14 (Android 14), IP65 dust/splash resistant, Alert Slider',
     ],
     mrp: 64999,
-    rating: 4.6,
-    reviews: 2050,
     lastUpdated: '2026-09-18',
     dataIsLive: false,
     sellers: [
@@ -225,8 +218,6 @@ export const products = [
       'Lightweight 250g, speak-to-chat, adaptive sound control, Sony Headphones Connect app',
     ],
     mrp: 34990,
-    rating: 4.6,
-    reviews: 12456,
     lastUpdated: '2026-09-18',
     dataIsLive: false,
     sellers: [
@@ -271,8 +262,6 @@ export const products = [
       'JBL Headphones App for EQ presets and ANC customization, 3.5mm cable included',
     ],
     mrp: 7999,
-    rating: 4.3,
-    reviews: 4120,
     lastUpdated: '2026-09-18',
     dataIsLive: false,
     sellers: [
@@ -317,8 +306,6 @@ export const products = [
       'IPX4 water resistance, 3.5mm AUX port (wired mode supported)',
     ],
     mrp: 8990,
-    rating: 4.0,
-    reviews: 3200,
     lastUpdated: '2026-09-18',
     dataIsLive: false,
     sellers: [
@@ -363,8 +350,6 @@ export const products = [
       'Built-in HD mic with voice assistance support (Siri / Google Assistant)',
     ],
     mrp: 5990,
-    rating: 4.2,
-    reviews: 8910,
     lastUpdated: '2026-09-18',
     dataIsLive: false,
     sellers: [
@@ -402,8 +387,6 @@ export const products = [
       'Windows 11 Home, lightweight ~1.5 kg, 2x USB-A + 2x USB-C + HDMI ports',
     ],
     mrp: 95000,
-    rating: 4.4,
-    reviews: 1680,
     lastUpdated: '2026-09-18',
     dataIsLive: false,
     sellers: [
@@ -441,8 +424,6 @@ export const products = [
       'Windows 11 Home, HD 720p webcam, stereo speakers, about 1.62 kg; wireless/keyboard options vary by SKU',
     ],
     mrp: 69990,
-    rating: 4.2,
-    reviews: 2310,
     lastUpdated: '2026-09-18',
     dataIsLive: false,
     sellers: [
@@ -480,8 +461,6 @@ export const products = [
       'Windows 11 Home, B&O tuned dual speakers, ~1.4 kg, 65W USB-C charging',
     ],
     mrp: 99999,
-    rating: 4.3,
-    reviews: 620,
     lastUpdated: '2026-09-18',
     dataIsLive: false,
     sellers: [
@@ -519,8 +498,6 @@ export const products = [
       '2x USB-C 3.2 Gen 2 with DisplayPort/Power Delivery, USB-A, HDMI 1.4, Wi-Fi 7, Bluetooth; about 1.52 kg, 65W USB-C charger (ports vary by configuration)',
     ],
     mrp: 84990,
-    rating: 4.0,
-    reviews: 310,
     lastUpdated: '2026-09-18',
     dataIsLive: false,
     sellers: [
@@ -558,8 +535,6 @@ export const products = [
       'Windows 11, Wi-Fi 6E (802.11ax), Bluetooth 5.3, USB-C PD charging; exact weight varies by SKU',
     ],
     mrp: 74990,
-    rating: 4.5,
-    reviews: 1563,
     lastUpdated: '2026-09-18',
     dataIsLive: false,
     sellers: [
@@ -597,8 +572,6 @@ export const products = [
       'Wi-Fi 6E (802.11ax), Bluetooth 5.3, USB-C PD charging; 70Wh battery, weight and other details vary by SKU',
     ],
     mrp: 82990,
-    rating: 4.5,
-    reviews: 1563,
     lastUpdated: '2026-09-18',
     dataIsLive: false,
     sellers: [
@@ -636,8 +609,6 @@ export const products = [
       'Sony Headphones Connect app EQ customization, foldable flat for travel',
     ],
     mrp: 5990,
-    rating: 4.2,
-    reviews: 5800,
     lastUpdated: '2026-09-18',
     dataIsLive: false,
     sellers: [
@@ -675,8 +646,6 @@ export const products = [
       'Four microphones for calls, Nothing X app EQ, USB-C audio and 3.5mm audio connection',
     ],
     mrp: 21999,
-    rating: 4.1,
-    reviews: 980,
     lastUpdated: '2026-09-18',
     dataIsLive: false,
     sellers: [

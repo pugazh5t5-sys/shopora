@@ -23,6 +23,8 @@ jobs:
           cache: npm
       - name: Install locked dependencies
         run: npm ci
+      - name: Audit dependencies
+        run: npm audit --audit-level=moderate
       - name: Run tests
         run: npm test
       - name: Build production assets

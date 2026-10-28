@@ -47,7 +47,7 @@ The first local `npm audit` request failed with DNS error `EAI_AGAIN registry.np
 
 ## Verification
 
-- A [GitHub Actions validation run](https://github.com/pugazh5t5-sys/shopora/actions/runs/40614389720) passed dependency installation, all 11 Node tests, the Vite production build, and artifact upload on application-code commit `a66222100b9f847c577846d499d451634bb1c21d`. Subsequent audit-documentation edits did not change application code; the PR workflow validates each commit.
+- The latest [GitHub Actions validation run](https://github.com/pugazh5t5-sys/shopora/actions/runs/40617725384) on commit `f677684b5474d33515b14c586a7e58667814c5ed` passed locked dependency installation, `npm audit --audit-level=moderate` (**0 vulnerabilities**), all 11 Node tests, the Vite production build, and artifact upload.
 - Browser/visual/accessibility tests have not been run.
 - No hosting deployment has been attempted.
 

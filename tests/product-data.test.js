@@ -78,6 +78,7 @@ test('manufacturer-specific product copy avoids known specification mistakes', (
 
   const asusS16 = getProductBySlug('asus-vivobook-s16-snapdragon-oled')
   assert.ok(asusS16)
+  assert.equal(asusS16.mrp, 98990, 'reference price matches the current ASUS India listing reviewed in the audit')
   assert.ok(asusS16.specs.some((spec) => /95% DCI-P3/i.test(spec)))
   assert.ok(asusS16.specs.some((spec) => /Wi-Fi 6E/i.test(spec)))
   assert.doesNotMatch(asusS16.specs.join(' '), /32\+ hours|Wi-Fi 7|fanless design|180° lay-flat/i)

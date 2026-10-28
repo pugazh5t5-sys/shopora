@@ -571,7 +571,7 @@ export const products = [
       'Copilot+ PC: Recall, Cocreator, Live Captions / Translate on-device AI features',
       'Wi-Fi 6E (802.11ax), Bluetooth 5.3, USB-C PD charging; 70Wh battery, weight and other details vary by SKU',
     ],
-    mrp: 82990,
+    mrp: 98990,
     lastUpdated: '2026-09-18',
     dataIsLive: false,
     sellers: [

@@ -49,6 +49,7 @@ The first local `npm audit` request failed with DNS error `EAI_AGAIN registry.np
 
 - The dependency/application validation checkpoint [run #40617887805](https://github.com/pugazh5t5-sys/shopora/actions/runs/40617887805) on commit `b794c85ea96524a474b52111aa7872b8da6c5923` passed locked dependency installation, `npm audit --audit-level=moderate` (**0 vulnerabilities**), all 11 Node tests, the Vite production build, and artifact upload.
 - After adding a source-archive artifact to CI, [run #40618060971](https://github.com/pugazh5t5-sys/shopora/actions/runs/40618060971) on commit `14d6aa78596897c4282840550a9edf6919e5af2c` passed the same audit/tests/build and successfully uploaded both `shopora-dist` and `shopora-source` artifacts.
+- The workflow was then updated to Node 24-compatible actions (`checkout@v5`, `setup-node@v7`, `upload-artifact@v7`) and run on Node 24. [Run #40618463879](https://github.com/pugazh5t5-sys/shopora/actions/runs/40618463879) passed the dependency audit, all 11 tests, production build, and both artifact uploads with no Node 20 deprecation warning.
 - Browser/visual/accessibility tests have not been run.
 - No hosting deployment has been attempted.
 

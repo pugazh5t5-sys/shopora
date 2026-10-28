@@ -12,13 +12,6 @@ import {
   sellersSortedAsc,
 } from '../utils/format'
 
-function renderStars(rating) {
-  const full = Math.floor(rating)
-  const half = rating - full >= 0.5
-  const empty = 5 - full - (half ? 1 : 0)
-  return '★'.repeat(full) + (half ? '⯨' : '') + '☆'.repeat(empty)
-}
-
 const sellerClassMap = {
   'Amazon': 'amazon',
   'Flipkart': 'flipkart',
@@ -78,12 +71,7 @@ function ProductPage() {
             <span className="product-brand-pill">{product.brand}</span>
             <h1 id="product-title" className="product-title">{product.name}</h1>
 
-            <div className="product-rating-row" aria-label={`Unverified catalogue rating ${product.rating} out of 5; ${product.reviews.toLocaleString('en-IN')} reviews, not independently verified`}>
-              <span className="stars" aria-hidden="true">{renderStars(product.rating)}</span>
-              <span style={{ fontWeight: 600, color: 'var(--neutral-700)' }}>{product.rating}</span>
-              <span>· {product.reviews.toLocaleString('en-IN')} reviews</span>
-              <span className="rating-source-note">unverified snapshot</span>
-            </div>
+            <p className="rating-source-note" role="note">Ratings and review counts are omitted until verified.</p>
 
             <div className="lowest-banner" role="note">
               <span aria-hidden="true">{best ? '🏆' : 'ℹ️'}</span>
@@ -246,8 +234,8 @@ function ProductPage() {
                     <span className={`seller-dot ${sellerClassMap[seller.seller] || ''}`} aria-hidden="true"></span>
                     <strong>{seller.seller}</strong>
                   </span>
-                  {idx === 0 && <span className="lowest-label"><span aria-hidden="true">🏆</span> Lowest</span>}
-                  {idx === sorted.length - 1 && sorted.length > 1 && <span className="highest-label">Highest</span>}
+                  {seller === best && <span className="lowest-label"><span aria-hidden="true">🏆</span> Lowest in-stock</span>}
+                  {seller === worst && availableCount > 1 && <span className="highest-label">Highest in-stock</span>}
                 </div>
                 <div className="seller-card-price">{formatINR(seller.price)}</div>
                 <div className="seller-card-meta">
@@ -262,9 +250,9 @@ function ProductPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="view-deal-btn"
-                  aria-label={`View deal on ${seller.seller} at ${formatINR(seller.price)} — opens in new tab`}
+                  aria-label={`Check recorded listing on ${seller.seller} at ${formatINR(seller.price)} — opens in new tab`}
                 >
-                  View Deal ↗
+                  Check Listing ↗
                 </a>
               </article>
             ))}

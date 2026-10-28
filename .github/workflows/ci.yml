@@ -35,3 +35,12 @@ jobs:
           name: shopora-dist
           path: dist/
           if-no-files-found: error
+
+      - name: Create source archive
+        run: zip -r shopora-source.zip . -x ".git/*" "node_modules/*" "dist/*" "shopora-source.zip"
+      - name: Upload source archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: shopora-source
+          path: shopora-source.zip
+          if-no-files-found: error

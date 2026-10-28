@@ -15,11 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: '22.x'
+          node-version: '24.x'
           cache: npm
       - name: Install locked dependencies
         run: npm ci
@@ -30,7 +30,7 @@ jobs:
       - name: Build production assets
         run: npm run build
       - name: Upload production bundle
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: shopora-dist
           path: dist/
@@ -39,7 +39,7 @@ jobs:
       - name: Create source archive
         run: zip -r shopora-source.zip . -x ".git/*" "node_modules/*" "dist/*" "shopora-source.zip"
       - name: Upload source archive
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: shopora-source
           path: shopora-source.zip

@@ -1,3 +1,5 @@
+> **Historical build prompt — 28 October 2026:** The example prices and star ratings below are illustrative requirements, not verified current values. The implementation uses static price snapshots dated 18 September 2026, and rating/review figures have been removed until source URLs and capture timestamps can substantiate them. See [`SHOPORA_AUDIT.md`](SHOPORA_AUDIT.md) for current status.
+
 ## CRITICAL: USE REAL PRODUCTS AND REAL CURRENT PRICES
 
 Shopora must display **real-world products that actually exist** and, when live data is available, show their **current real selling prices in Indian Rupees (₹)**.

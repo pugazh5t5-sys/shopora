@@ -12,7 +12,7 @@ function Footer({ onCategoryChange }) {
       <div className="footer-links"><h4>Shopora</h4><Link to="/about">About</Link><Link to="/privacy">Privacy information</Link><Link to="/terms">Terms of use</Link></div>
       <div className="footer-links"><h4>Browse categories</h4><Link to="/" onClick={() => selectCategory('Smartphones')}>Smartphones</Link><Link to="/" onClick={() => selectCategory('Headphones')}>Headphones</Link><Link to="/" onClick={() => selectCategory('Laptops')}>Laptops</Link><Link to="/" onClick={() => selectCategory('All')}>All products</Link></div>
     </div>
-    <div className="footer-bottom"><div>© {new Date().getFullYear()} Shopora.</div><div className="footer-bottom-disclaimer">Catalogue snapshot: {formatSnapshotDate(latestSnapshotDate)}. Prices and availability can change; verify the retailer&apos;s final listing before purchase. Ratings and review counts are unverified catalogue snapshots. Product images are AI-generated illustrations, not retailer photographs. Product names, logos and brands belong to their respective owners. Shopora does not sell products directly.</div></div>
+    <div className="footer-bottom"><div>© {new Date().getFullYear()} Shopora.</div><div className="footer-bottom-disclaimer">Catalogue snapshot: {formatSnapshotDate(latestSnapshotDate)}. Prices and availability can change; verify the retailer&apos;s final listing before purchase. Ratings and review counts are omitted until source data can be verified. Product images are AI-generated illustrations, not retailer photographs. Product names, logos and brands belong to their respective owners. Shopora does not sell products directly.</div></div>
   </div></footer>
 }
 

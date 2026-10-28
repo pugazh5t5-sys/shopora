@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { products } from '../data/products'
 import ProductCard from '../components/ProductCard'
+import { formatSnapshotDate, getSnapshotAgeDays } from '../utils/format'
 
 const categories = ['All', 'Smartphones', 'Headphones', 'Laptops']
 
@@ -23,21 +24,25 @@ function HomePage({ searchQuery, onSearchChange, activeCategory, onCategoryChang
   }, [searchQuery, activeCategory])
 
   const hasFilters = searchQuery.trim().length > 0 || activeCategory !== 'All'
+  const snapshotDates = products.map((p) => p.lastUpdated).filter((date) => typeof date === 'string' && /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(date)).sort()
+  const latestSnapshotDate = snapshotDates.at(-1)
+  const snapshotAgeDays = latestSnapshotDate ? getSnapshotAgeDays(latestSnapshotDate) : null
 
   return (
     <>
       <section className="hero" aria-labelledby="hero-heading">
         <div className="hero-inner">
-          <h1 id="hero-heading">Compare real prices. Save real money.</h1>
+          <h1 id="hero-heading">Compare listed prices. Shop with confidence.</h1>
           <p className="hero-sub">
-            Shopora aggregates the latest prices from Amazon, Flipkart, Croma and Reliance Digital
-            so you always know exactly where to buy — with 100% real products and verified INR prices.
+            Shopora brings product listings from Amazon, Flipkart, Croma and Reliance Digital together
+            so you can compare recorded offers in one place. Prices are static snapshots, not live feeds;
+            confirm the current price, stock and delivery with the retailer before you buy.
           </p>
           <div className="hero-badges" role="list">
-            <div role="listitem" className="hero-badge"><span aria-hidden="true">✅</span> 15 real products</div>
-            <div role="listitem" className="hero-badge"><span aria-hidden="true">🏷️</span> Prices as of 18 Sep 2026</div>
-            <div role="listitem" className="hero-badge"><span aria-hidden="true">🛒</span> 4 trusted retailers</div>
-            <div role="listitem" className="hero-badge"><span aria-hidden="true">🇮🇳</span> Made in India</div>
+            <div role="listitem" className="hero-badge"><span aria-hidden="true">🛍️</span> {products.length} products in catalogue</div>
+            <div role="listitem" className="hero-badge"><span aria-hidden="true">🏷️</span> Snapshot: {formatSnapshotDate(latestSnapshotDate)}</div>
+            <div role="listitem" className="hero-badge"><span aria-hidden="true">🛒</span> Up to 4 retailers listed</div>
+            <div role="listitem" className="hero-badge"><span aria-hidden="true">⏱️</span> {snapshotAgeDays == null ? 'Snapshot age unknown' : snapshotAgeDays + ' days since update'}</div>
           </div>
         </div>
       </section>

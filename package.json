@@ -3,11 +3,12 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Shopora - Real Product Price Comparison India. Compare Amazon, Flipkart, Croma prices. No fake products, no fake prices.",
+  "description": "Shopora - Product discovery and static price comparison snapshots for Indian retailers.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --test"
   },
   "dependencies": {
     "react": "^18.3.1",

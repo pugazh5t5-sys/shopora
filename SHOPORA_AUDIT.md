@@ -15,7 +15,7 @@ The original UI used “latest” and “verified” wording unsupported by its 
 | Severity | Finding | Status |
 |---|---|---|
 | P1 — launch blocker | Static prices have no per-offer source URL, capture timestamp, provenance or refresh | UI calls them snapshots and warns shoppers. Authorized feeds, provenance and refresh monitoring remain unimplemented. |
-| P1 — dependency security | Lockfile still resolves Vite 5.4.21 and React Router DOM 6.30.6; GitHub Actions reported 5 vulnerabilities (3 moderate, 2 high) during dependency install | Not upgraded yet because the local npm registry request failed. A supported patched upgrade and fresh `npm audit` remain required. |
+| P1 — dependency security | The original lockfile resolved old Vite and React Router releases; the initial dependency install reported 5 vulnerabilities (3 moderate, 2 high) | Upgraded to Vite 8.3.5, `@vitejs/plugin-react` 6.1.2, and `react-router-dom` 7.18.5. After lockfile regeneration, GitHub Actions `npm audit` reported 0 vulnerabilities. CI now gates on `npm audit --audit-level=moderate`. |
 | P1 — catalogue trust | Product ratings/review counts lack source URLs and capture timestamps; imagery is generated, not official retailer photography | Removed unverified rating/review numbers from the data and UI, and disclosed that product images are AI-generated illustrations. Only add ratings/reviews back with source URLs and capture timestamps; replace or license images before a real shopping launch. |
 | P1 — product specification accuracy | Sony WH-CH520 had unsupported ANC wording; Sony WH-1000XM5 had a false microphone-count claim; Galaxy S24 processor was generalized incorrectly for India; boAt 650 Pro water-resistance rating (corrected to IPX4), ASUS Vivobook panel/wireless claims, Lenovo Slim 3 memory type, Dell 14 Plus GPU/ports, HP Pavilion Plus model name/display/camera/ports/memory claims, unsupported Dell Dolby claims, and ASUS S16 color gamut were inaccurate | Corrected the known claims against manufacturer references, including Dell 14 Plus DB14255 Radeon 840M/ports, Lenovo Slim 3 LPDDR5 memory, ASUS S3407QA 2.5K display/Wi-Fi 6E, and ASUS S3607QA Wi-Fi 6E. The HP Pavilion Plus 14-ey0789AU was corrected to the full model name, 2.8K OLED, 48–120Hz, 100% DCI-P3, LPDDR5X-6400 memory, 5MP IR camera and USB-C 10Gbps; ASUS S16 OLED gamut was corrected to 95% DCI-P3, and unsupported Dell Dolby Vision/Atmos claims were removed. Official sources are linked below. Other catalog specs and all historical seller prices still need source-by-source review. |
 | P1 — deployment workflow | Previous Azure workflow contained a placeholder app name and did not represent a configured deployment | Replaced by CI that installs dependencies, runs tests/build, and uploads the build artifact. Real hosting is not configured. |
@@ -41,9 +41,9 @@ The original UI used “latest” and “verified” wording unsupported by its 
 
 - [Vite advisory GHSA-rq7h-c2jc-7f22](https://github.com/vitejs/vite/security/advisories/GHSA-rq7h-c2jc-7f22)
 - [Vite advisory GHSA-8g5g-mxqh-grgj](https://github.com/vitejs/vite/security/advisories/GHSA-8g5g-mxqh-grgj)
-- [React Router package advisory](https://security.snyk.io/package/npm/react-router/6.30.6)
+- [React Router security advisory](https://github.com/advisories/GHSA-wrjc-x8rr-h8h6)
 
-The local `npm audit` request failed with DNS error `EAI_AGAIN registry.npmjs.org`; this is not a clean security audit. The prior GitHub Actions install reported **5 vulnerabilities (3 moderate, 2 high)**. Dependency upgrades and a fresh audit remain outstanding.
+The first local `npm audit` request failed with DNS error `EAI_AGAIN registry.npmjs.org`. The dependency lockfile has since been regenerated on GitHub Actions after upgrading Vite to 8.3.5, `@vitejs/plugin-react` to 6.1.2, and React Router DOM to 7.18.5; that run's `npm audit` reported **0 vulnerabilities**. The permanent CI workflow now runs `npm audit --audit-level=moderate`. Security results reflect the current lockfile at audit time and must be rerun as dependencies change.
 
 ## Verification
 
@@ -53,7 +53,7 @@ The local `npm audit` request failed with DNS error `EAI_AGAIN registry.npmjs.or
 
 ## Required before real-user launch
 
-1. Upgrade Vite and React Router to supported patched releases, regenerate the lockfile, and review a fresh `npm audit` (not just the install summary).
+1. Keep dependencies current and pass the permanent CI gate: `npm ci`, `npm audit --audit-level=moderate`, `npm test`, and `npm run build`.
 2. Revalidate every product spec, reference MRP, seller price, stock label, delivery estimate, rating and review count with authoritative sources; store per-offer source URLs and capture timestamps.
 3. Replace generated pictures with licensed/authorized variant-correct imagery, or keep the illustrative disclosure prominent.
 4. Implement authorized live data retrieval, scheduled refresh, stale-data handling, monitoring and provenance display if Shopora is to be marketed as live pricing.

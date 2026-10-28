@@ -1185,8 +1185,20 @@ input {
 }
 
 @media (max-width: 768px) {
-  .navbar-pills .pill span {
-    display: none;
+  /* Keep mobile navigation labels visible; never leave anonymous pill buttons. */
+  .navbar-inner {
+    flex-wrap: wrap;
+  }
+  .navbar-pills {
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .navbar-pills .pill {
+    padding: 0.35rem 0.65rem;
+  }
+  /* The expanded mobile header can be taller than the desktop header. */
+  .filters-bar {
+    position: static;
   }
   .compare-table-wrap {
     display: none;
@@ -1201,10 +1213,15 @@ input {
     flex-wrap: wrap;
     padding: 0.75rem 1rem;
   }
+  .navbar-pills {
+    order: 2;
+    flex: 1 0 100%;
+    justify-content: flex-start;
+  }
   .navbar-search {
     order: 3;
     max-width: 100%;
-    flex-basis: 100%;
+    flex: 1 0 100%;
   }
   .filters-bar {
     top: 115px;

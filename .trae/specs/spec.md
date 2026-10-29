@@ -1,5 +1,7 @@
 # Shopora - Product Requirements Document
 
+> **Implementation status note — 28 October 2026:** This is an aspirational requirements document, not evidence that every requirement is currently met. The existing app is a static catalogue: all product entries use `dataIsLive: false`, the recorded date is 18 September 2026 (40 days old), and seller price/stock/delivery values do not have per-offer source URLs or capture timestamps. Ratings and review counts are omitted until sourced, and product images are generated illustrations rather than retailer photography. Do not describe the current catalogue as live or verified. The current code audit and launch blockers are in [`SHOPORA_AUDIT.md`](../../SHOPORA_AUDIT.md). The latest reviewed implementation is on the `audit/production-readiness-fixes` pull-request branch; it has not been merged into `main`.
+
 ## Overview
 - **Summary**: Shopora is a price comparison web application that displays real-world consumer electronics products with verified current prices from multiple Indian retailers (Amazon, Flipkart, Croma, Reliance Digital), helping users find the lowest available price.
 - **Purpose**: Build trust through transparency by using only real products with accurate pricing, eliminating fictional products and fake prices. Enable users to compare prices across retailers and navigate to actual deals.
@@ -62,7 +64,7 @@ The project is defined in `promp 2.md` which mandates:
 - For MVP, retailer links point to product search pages on the real retailer sites (e.g., amazon.in/s?k=Sony+WH-1000XM5) since exact product page URLs can change
 - Image URLs use Unsplash / retailer CDN public product images that do not require authentication
 - 10–15 products in MVP catalog is acceptable and meets the 10–20 product requirement
-- Sep 18, 2026 is the "Price updated" date for all static data (today's date)
+- 18 September 2026 is the seeded snapshot date, not the current date; on 28 October 2026 the snapshot is 40 days old
 
 ## Acceptance Criteria
 

@@ -1,3 +1,5 @@
+> **Status note — 28 October 2026:** This file is the original implementation plan. Its `pending` labels were not maintained as a live task tracker and may not reflect implemented work. For current code, CI results, and outstanding blockers, see [`SHOPORA_AUDIT.md`](../../SHOPORA_AUDIT.md). The current branch has regression tests and a passing CI build, but live price feeds, dependency remediation, browser testing, and hosting deployment remain outstanding.
+
 # Shopora - Implementation Plan
 
 ## Task 1: Scaffold Vite + React project and configure for static deployment

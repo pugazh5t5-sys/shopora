@@ -489,6 +489,7 @@ input {
 
 .product-card-rating {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.3rem;
   font-size: 0.8rem;
@@ -687,6 +688,7 @@ input {
 
 .product-rating-row {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
@@ -1183,8 +1185,20 @@ input {
 }
 
 @media (max-width: 768px) {
-  .navbar-pills .pill span {
-    display: none;
+  /* Keep mobile navigation labels visible; never leave anonymous pill buttons. */
+  .navbar-inner {
+    flex-wrap: wrap;
+  }
+  .navbar-pills {
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .navbar-pills .pill {
+    padding: 0.35rem 0.65rem;
+  }
+  /* The expanded mobile header can be taller than the desktop header. */
+  .filters-bar {
+    position: static;
   }
   .compare-table-wrap {
     display: none;
@@ -1199,10 +1213,15 @@ input {
     flex-wrap: wrap;
     padding: 0.75rem 1rem;
   }
+  .navbar-pills {
+    order: 2;
+    flex: 1 0 100%;
+    justify-content: flex-start;
+  }
   .navbar-search {
     order: 3;
     max-width: 100%;
-    flex-basis: 100%;
+    flex: 1 0 100%;
   }
   .filters-bar {
     top: 115px;
@@ -1217,4 +1236,22 @@ input {
   .cta-row .btn-secondary {
     flex: 1;
   }
+}
+
+/* Fallback styles, keyboard focus, and content pages added during audit. */
+.product-card-unavailable { position: absolute; top: .6rem; left: .6rem; z-index: 2; background: #fee2e2; color: #991b1b; padding: .25rem .55rem; border-radius: 6px; font-size: .7rem; font-weight: 700; }
+.unavailable-price { color: var(--neutral-500) !important; font-size: .92rem !important; font-weight: 700 !important; text-decoration: none !important; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 3px solid var(--brand-indigo); outline-offset: 3px; }
+.info-page { max-width: 860px; margin: 0 auto; padding: 1.5rem 0 3.5rem; }
+.info-page > h1 { margin: 1.5rem 0 .75rem; color: var(--neutral-900); font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.2; }
+.info-page-intro { color: var(--neutral-600); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; }
+.info-page section { padding: 1.15rem 0; border-top: 1px solid var(--neutral-200); }
+.info-page section h2 { color: var(--neutral-800); font-size: 1.1rem; margin-bottom: .45rem; }
+.info-page section p { color: var(--neutral-600); line-height: 1.75; }
+
+.rating-source-note {
+  font-size: 0.68rem;
+  color: var(--neutral-500);
+  font-weight: 600;
+  white-space: nowrap;
 }
